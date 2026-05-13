@@ -6,7 +6,7 @@ st.set_page_config(page_title="CR Collection Level Calc", page_icon="👑")
 st.title("👑 Clash Royale Collection Level Calculator")
 st.markdown("Find out exactly which **2026 Celebration Reward Bin** you fall into before the update drops!")
 
-# Grabs the secret key you stored in Streamlit's dashboard
+# Key in Streamlit dashboard
 API_KEY = st.secrets["CR_API_KEY"] 
 
 player_tag = st.text_input("Enter your Player Tag (with or without #):", placeholder="e.g. 2PP")
@@ -45,7 +45,6 @@ if st.button("Calculate My Level"):
                 data = response.json()
                 total_level = 0
                 
-                # FIX: Combine regular cards and Tower Troops (supportCards) into one list
                 all_cards = data.get('cards', []) + data.get('supportCards', [])
                 
                 for card in all_cards:
